@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.svg" alt="Pokémon Trainer Hub Lite – Retro-Gaming und Self-hosted Linux Server" width="100%"></p>
+
 # 🎮 Pokémon Trainer Hub Lite
 
 **Deine Retro-Spielebibliothek. Dein Server. Deine Spielstände.**
@@ -5,6 +7,8 @@
 PokemonTrainerHub-Lite ist ein leichtgewichtiges, selbst hostbares Serverpaket rund um [RomM](https://romm.app/). Es organisiert Retrospiele und Speicherstände auf der eigenen Hardware – vom kleinen Bare-Metal-Server bis zur VM in Hyper-V, Proxmox, KVM oder VMware.
 
 > **Projektstatus: v0.2.0 – Server-Grundlage.** Eine eigene Pokémon-Traineroberfläche, eigene Achievements, zentrale Trainerlevel und 3DS-Integration sind geplant, aber **noch nicht enthalten**. Bestehende RetroAchievements hängen von kompatiblen lokalen Emulatoren und deren Anbindung ab.
+
+<p align="center"><img src="assets/platforms.svg" alt="Unterstützte Serverumgebungen: Bare Metal, Hyper-V, Proxmox VM, KVM und VMware" width="100%"></p>
 
 ## ✨ Highlights
 
@@ -18,6 +22,12 @@ PokemonTrainerHub-Lite ist ein leichtgewichtiges, selbst hostbares Serverpaket r
 - 📉 **Ressourcenlimits:** RomM 2 GiB, MariaDB 768 MiB; Logrotation; 2/1 CPU-Kontingente
 - 🛡️ **Sicherer Standard:** Webport nur auf localhost; Veröffentlichung über Reverse Proxy oder bewusstes LAN-Binding
 - ♻️ **Zwei Installationswege:** frischer Server oder vorhandene RomM-Installation
+
+## 🧩 Architektur
+
+![Vereinfachte Serverarchitektur mit Browser, lokalem Emulator, RomM, MariaDB und Datenspeicher](assets/architecture.svg)
+
+Die Illustrationen erklären das Konzept. Sie zeigen keine fertige eigene Trainer-Hub-Oberfläche.
 
 ## 📦 Download
 
@@ -97,7 +107,7 @@ Dies sind **Obergrenzen, keine Verbrauchs- oder Hardwaregarantie**. Für kleine 
 
 ## 🔐 Datenschutz und Rechtliches
 
-Keine ROMs, BIOS-Dateien, Passwörter, private Datenbanken oder Speicherstände in dieses Repository einchecken. Spiele und erforderliche Firmware sind selbst und rechtmäßig bereitzustellen. Im öffentlichen Git-Repository liegen ausschließlich die Installationsdateien.
+Die Grafiken unter `assets/` sind eigens gestaltete Projektillustrationen ohne offizielle Pokémon-Figuren oder Nintendo-Artworks. Keine ROMs, BIOS-Dateien, Passwörter, private Datenbanken oder Speicherstände in dieses Repository einchecken. Spiele und erforderliche Firmware sind selbst und rechtmäßig bereitzustellen. Im öffentlichen Git-Repository liegen ausschließlich die Installationsdateien.
 
 ## 🗺️ Roadmap
 
