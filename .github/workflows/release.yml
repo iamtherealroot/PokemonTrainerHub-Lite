@@ -1,0 +1,44 @@
+name: Publish v0.2.0
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/release.yml'
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate
+        run: |
+          bash -n scripts/install.sh scripts/apply.sh scripts/check.sh
+          test -f deploy/docker-compose.yml
+      - name: Package
+        run: |
+          mkdir -p dist
+          tar -czf dist/PokemonTrainerHub-Lite-v0.2.0.tar.gz README.md .gitignore deploy scripts docker-compose.override.yml
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          with ZipFile('dist/PokemonTrainerHub-Lite-v0.2.0.zip', 'w', ZIP_DEFLATED) as z:
+              for s in ['README.md', '.gitignore', 'docker-compose.override.yml']:
+                  z.write(s, s)
+              for folder in ['deploy','scripts']:
+                  for p in Path(folder).rglob('*'):
+                      if p.is_file(): z.write(p, str(p))
+          PY
+          cd dist && sha256sum *.zip *.tar.gz > SHA256SUMS
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.2.0 >/dev/null 2>&1; then
+            echo 'v0.2.0 is already published. No overwrite.'
+          else
+            gh release create v0.2.0 dist/* --target "$GITHUB_SHA" \
+              --title 'Pokémon Trainer Hub Lite v0.2.0' \
+              --notes 'First portable server package: Debian/Ubuntu bare metal and VM setup with Docker, RomM, MariaDB, RAM limits, separate fresh-install and existing-install workflows. No custom Trainer Hub UI yet.'
+          fi
