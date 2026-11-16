@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="238" viewBox="0 0 1100 238" role="img" aria-labelledby="a b">
+<title id="a">Serverplattformen</title><desc id="b">Fünf Kacheln für Bare Metal, Hyper-V, Proxmox, KVM und VMware</desc>
+<rect width="1100" height="238" rx="20" fill="#0d1729"/>
+<text x="38" y="43" fill="#f4fbff" font-family="Arial,sans-serif" font-size="24" font-weight="bold">Bereit für deine Serverumgebung</text>
+<g font-family="Arial,DejaVu Sans,sans-serif" text-anchor="middle">
+<g transform="translate(32 70)"><rect width="193" height="140" rx="16" fill="#1b3345" stroke="#50c6a9"/><rect x="75" y="25" width="43" height="54" rx="7" fill="none" stroke="#75e6cd" stroke-width="4"/><circle cx="96" cy="65" r="4" fill="#75e6cd"/><text x="96" y="115" fill="#fff" font-size="18" font-weight="bold">Bare Metal</text></g>
+<g transform="translate(242 70)"><rect width="193" height="140" rx="16" fill="#1b3345" stroke="#759fea"/><rect x="53" y="24" width="87" height="57" rx="6" fill="none" stroke="#9ab8fb" stroke-width="4"/><path d="M94 81v15m-24 0h48" stroke="#9ab8fb" stroke-width="4"/><text x="96" y="115" fill="#fff" font-size="18" font-weight="bold">Hyper-V</text></g>
+<g transform="translate(452 70)"><rect width="193" height="140" rx="16" fill="#1b3345" stroke="#50c6a9"/><path d="M68 34h56v45H68zM80 23h56v45" fill="none" stroke="#75e6cd" stroke-width="4"/><text x="96" y="115" fill="#fff" font-size="18" font-weight="bold">Proxmox VM</text></g>
+<g transform="translate(662 70)"><rect width="193" height="140" rx="16" fill="#1b3345" stroke="#759fea"/><path d="M63 30h65v51H63zM83 47h65v51H83z" fill="none" stroke="#9ab8fb" stroke-width="4"/><text x="96" y="115" fill="#fff" font-size="18" font-weight="bold">KVM</text></g>
+<g transform="translate(872 70)"><rect width="193" height="140" rx="16" fill="#1b3345" stroke="#50c6a9"/><path d="M69 25l52 0 27 25-27 25H69L43 50z" fill="none" stroke="#75e6cd" stroke-width="4"/><text x="96" y="115" fill="#fff" font-size="18" font-weight="bold">VMware</text></g>
+</g></svg>
