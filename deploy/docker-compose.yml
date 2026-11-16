@@ -1,0 +1,55 @@
+services:
+  romm-db:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?DB_ROOT_PASSWORD missing}
+      MARIADB_DATABASE: romm
+      MARIADB_USER: romm-user
+      MARIADB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD missing}
+    volumes:
+      - ${PTH_DATA_DIR:?PTH_DATA_DIR missing}/database:/var/lib/mysql
+    mem_limit: 768m
+    cpus: 1.0
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 60s
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  romm:
+    image: rommapp/romm:latest
+    restart: unless-stopped
+    depends_on:
+      romm-db:
+        condition: service_healthy
+    environment:
+      ROMM_DB_DRIVER: mariadb
+      DB_HOST: romm-db
+      DB_NAME: romm
+      DB_USER: romm-user
+      DB_PASSWD: ${DB_PASSWORD:?DB_PASSWORD missing}
+      ROMM_AUTH_SECRET_KEY: ${ROMM_AUTH_SECRET_KEY:?ROMM_AUTH_SECRET_KEY missing}
+      HASHEOUS_API_ENABLED: "true"
+      TZ: ${TZ:-Europe/Berlin}
+    ports:
+      - "${PTH_BIND:-127.0.0.1}:${PTH_PORT:-8080}:8080"
+    volumes:
+      - ${PTH_DATA_DIR:?PTH_DATA_DIR missing}/library:/romm/library
+      - ${PTH_DATA_DIR:?PTH_DATA_DIR missing}/assets:/romm/assets
+      - ${PTH_DATA_DIR:?PTH_DATA_DIR missing}/resources:/romm/resources
+      - ${PTH_DATA_DIR:?PTH_DATA_DIR missing}/config:/romm/config
+      - ${PTH_DATA_DIR:?PTH_DATA_DIR missing}/redis-data:/redis-data
+    mem_limit: 2g
+    cpus: 2.0
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
