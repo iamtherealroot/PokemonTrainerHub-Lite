@@ -105,6 +105,16 @@ Das Skript sichert Compose-Konfigurationen, **nicht** die Datenbank oder ROMs. U
 
 Dies sind **Obergrenzen, keine Verbrauchs- oder Hardwaregarantie**. Für kleine Installationen zunächst 4 GiB VM-RAM und 2 vCPU testen, danach messen. Browseremulation findet auf den Endgeräten statt.
 
+## 🛡️ Sicherheit für öffentliche Server
+
+**Wichtig:** Ein öffentlich erreichbarer Server benötigt mehr als nur ein Docker-RAM-Limit. Eine Schritt-für-Schritt-Checkliste, Reverse-Proxy-Beispiel, Authentifizierungshinweise und ein rein lesender Sicherheitscheck stehen in **[docs/SECURITY.md](docs/SECURITY.md)**.
+
+```bash
+sudo bash scripts/security-audit.sh
+```
+
+Das Skript prüft erkennbare Portfreigaben und Containerparameter. Es ändert **keine** Firewall-Regeln oder Passwörter. Bei öffentlicher Freigabe muss Port 8080 gegen direkten Internetzugriff geschützt werden.
+
 ## 🔐 Datenschutz und Rechtliches
 
 Die Grafiken unter `assets/` sind eigens gestaltete Projektillustrationen ohne offizielle Pokémon-Figuren oder Nintendo-Artworks. Keine ROMs, BIOS-Dateien, Passwörter, private Datenbanken oder Speicherstände in dieses Repository einchecken. Spiele und erforderliche Firmware sind selbst und rechtmäßig bereitzustellen. Im öffentlichen Git-Repository liegen ausschließlich die Installationsdateien.
